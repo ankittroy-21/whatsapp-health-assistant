@@ -19,8 +19,8 @@ RUN npm run build || echo "No build step defined"
 # Production stage
 FROM node:18-alpine AS production
 
-# Install security updates
-RUN apk update && apk upgrade && apk add --no-cache dumb-init
+# Install security updates and FFmpeg for voice processing
+RUN apk update && apk upgrade && apk add --no-cache dumb-init ffmpeg
 
 # Set working directory
 WORKDIR /app
