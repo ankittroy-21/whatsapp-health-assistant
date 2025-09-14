@@ -2,14 +2,12 @@ services:
   - type: web
     name: whatsapp-health-assistant
     env: node
-    plan: free
-    buildCommand: npm ci
+    buildCommand: npm install
     startCommand: npm start
+    plan: free
     envVars:
       - key: NODE_ENV
         value: production
-      - key: PORT
-        value: 10000
       - key: SUPABASE_URL
         sync: false
       - key: SUPABASE_KEY
