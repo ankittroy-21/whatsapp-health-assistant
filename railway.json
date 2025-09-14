@@ -1,0 +1,18 @@
+{
+  "build": {
+    "commands": [
+      "npm ci"
+    ]
+  },
+  "start": {
+    "command": "npm start"
+  },
+  "env": {
+    "NODE_ENV": "production",
+    "PORT": "3000"
+  },
+  "regions": [
+    "us-west1"
+  ],
+  "plan": "starter"
+}
