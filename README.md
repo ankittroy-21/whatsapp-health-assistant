@@ -1,9 +1,26 @@
 # 🏥 WhatsApp Health Assistant Chatbot
 
-[![Deploy to Azure](https://img.shields.io/badge/Deploy%20to-Azure-0078d4?style=for-the-badge&logo=microsoft-azure)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fyour-username%2Fwhatsapp-health-assistant%2Fmain%2Fazure-deploy.json)
-[![Deploy to Render](https://img.shields.io/badge/Deploy%20to-Render-46e3b7?style=for-the-badge&logo=render)](https://render.com/deploy?repo=https://github.com/your-username/whatsapp-health-assistant)
-[![Deploy to Railway](https://img.shields.io/badge/Deploy%20to-Railway-0B0D0E?style=for-the-badge&logo=railway)](https://railway.app/new/template/your-template-id)
-[![Deploy to Vercel](https://img.shields.io/badge/Deploy%20to-Vercel-000000?style=for-the-badge&logo=vercel)](https://vercel.com/new/clone?repository-url=https://github.com/your-username/whatsapp-health-assistant)
+[![Deploy to Azure](https://img.shields.io/badge/Deploy%20to-Azure-0078d4?style=for-the-badge&logo=microsoft-azure)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fank## 📞 Support
+
+- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/ankittroy-21/whatsapp-health-assistant/issues)
+- 📖 **Documentation**: [Project Wiki](https://github.com/ankittroy-21/whatsapp-health-assistant/wiki)
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/ankittroy-21/whatsapp-health-assistant/discussions)
+
+---
+
+<div align="center">
+
+**🇮🇳 Made with ❤️ for accessible healthcare in rural India**
+
+*Empowering communities with instant access to health information in their preferred language*
+
+[![GitHub Stars](https://img.shields.io/github/stars/ankittroy-21/whatsapp-health-assistant?style=social)](https://github.com/ankittroy-21/whatsapp-health-assistant)
+[![GitHub Forks](https://img.shields.io/github/forks/ankittroy-21/whatsapp-health-assistant?style=social)](https://github.com/ankittroy-21/whatsapp-health-assistant)
+
+</div>pp-health-assistant%2Fmain%2Fazure-deploy.json)
+[![Deploy to Render](https://img.shields.io/badge/Deploy%20to-Render-46e3b7?style=for-the-badge&logo=render)](https://render.com/deploy?repo=https://github.com/ankittroy-21/whatsapp-health-assistant)
+[![Deploy to Railway](https://img.shields.io/badge/Deploy%20to-Railway-0B0D0E?style=for-the-badge&logo=railway)](https://railway.app/template/M4Kqvf?referralCode=ankittroy)
+[![Deploy to Vercel](https://img.shields.io/badge/Deploy%20to-Vercel-000000?style=for-the-badge&logo=vercel)](https://vercel.com/new/clone?repository-url=https://github.com/ankittroy-21/whatsapp-health-assistant)
 
 > 🇮🇳 **AI-Powered Health Assistant for Rural India** - Multilingual WhatsApp chatbot providing instant health guidance in English, Hindi, and Hinglish with voice support and emergency detection.
 
@@ -31,16 +48,16 @@
 Choose your preferred platform and click deploy:
 
 **Azure (Recommended for Production)**
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fyour-username%2Fwhatsapp-health-assistant%2Fmain%2Fazure-deploy.json)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fankittroy-21%2Fwhatsapp-health-assistant%2Fmain%2Fazure-deploy.json)
 
 **Render (Easiest Setup)**
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/your-username/whatsapp-health-assistant)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/ankittroy-21/whatsapp-health-assistant)
 
 **Railway (Developer Friendly)**
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/your-template-id)
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/M4Kqvf?referralCode=ankittroy)
 
 **Vercel (Serverless)**
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/your-username/whatsapp-health-assistant)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/ankittroy-21/whatsapp-health-assistant)
 
 ### 2️⃣ Configure Environment Variables
 After deployment, add these environment variables in your platform's dashboard:
@@ -89,7 +106,7 @@ Send a WhatsApp message to your Twilio number:
 ### Setup
 ```bash
 # Clone repository
-git clone https://github.com/your-username/whatsapp-health-assistant.git
+git clone https://github.com/ankittroy-21/whatsapp-health-assistant.git
 cd whatsapp-health-assistant
 
 # Install dependencies
