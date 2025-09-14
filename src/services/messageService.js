@@ -22,10 +22,14 @@ class MessageService {
         throw new Error('Twilio client not configured');
       }
 
+      // Handle phone number format - remove whatsapp: prefix if already present
+      const toNumber = to.startsWith('whatsapp:') ? to : `whatsapp:${to}`;
+      const fromNumber = this.twilioNumber.startsWith('whatsapp:') ? this.twilioNumber : `whatsapp:${this.twilioNumber}`;
+
       const result = await this.twilioClient.messages.create({
         body: message,
-        from: `whatsapp:${this.twilioNumber}`,
-        to: `whatsapp:${to}`
+        from: fromNumber,
+        to: toNumber
       });
 
       logger.info(`📤 WhatsApp message sent via Twilio to ${to}, SID: ${result.sid}`);

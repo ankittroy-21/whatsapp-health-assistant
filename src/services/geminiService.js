@@ -8,7 +8,7 @@ class GeminiService {
     this.model = null;
     
     if (this.genAI) {
-      this.model = this.genAI.getGenerativeModel({ model: 'gemini-pro' });
+      this.model = this.genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
     }
   }
 
