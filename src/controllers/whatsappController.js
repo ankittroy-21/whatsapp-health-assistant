@@ -51,7 +51,7 @@ class WhatsAppController {
       res.status(200).send('OK');
 
       // Process message asynchronously
-      this.processMessage({
+      await this.processMessage({
         phoneNumber,
         messageBody,
         mediaUrl,
@@ -61,7 +61,9 @@ class WhatsAppController {
 
     } catch (error) {
       logger.error('Error handling incoming message:', error);
-      res.status(500).json({ error: 'Internal server error' });
+      if (!res.headersSent) {
+        res.status(500).json({ error: 'Internal server error' });
+      }
     }
   }
 
@@ -164,4 +166,11 @@ class WhatsAppController {
   }
 }
 
-module.exports = new WhatsAppController();
+// Export an instance with bound methods
+const controller = new WhatsAppController();
+
+module.exports = {
+  verifyWebhook: controller.verifyWebhook.bind(controller),
+  handleIncomingMessage: controller.handleIncomingMessage.bind(controller),
+  handleStatusCallback: controller.handleStatusCallback.bind(controller)
+};
