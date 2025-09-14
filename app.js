@@ -9,6 +9,7 @@ const whatsappRoutes = require('./src/routes/whatsappRoutes');
 const healthRoutes = require('./src/routes/healthRoutes');
 const errorHandler = require('./src/middleware/errorHandler');
 const logger = require('./src/utils/logger');
+const keepAliveService = require('./src/services/keepAliveService');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -81,16 +82,25 @@ app.listen(PORT, () => {
   logger.info(`🚀 WhatsApp Health Assistant running on port ${PORT}`);
   logger.info(`📱 Environment: ${process.env.NODE_ENV || 'development'}`);
   logger.info(`🔗 Health check: http://localhost:${PORT}/health`);
+  
+  // Initialize keep-alive service to prevent Render free tier from spinning down
+  if (process.env.NODE_ENV === 'production') {
+    setTimeout(() => {
+      keepAliveService.init();
+    }, 30000); // Wait 30 seconds after startup to initialize
+  }
 });
 
 // Graceful shutdown
 process.on('SIGTERM', () => {
   logger.info('SIGTERM received, shutting down gracefully');
+  keepAliveService.stop();
   process.exit(0);
 });
 
 process.on('SIGINT', () => {
   logger.info('SIGINT received, shutting down gracefully');
+  keepAliveService.stop();
   process.exit(0);
 });
 

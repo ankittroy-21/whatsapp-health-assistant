@@ -54,6 +54,7 @@ After deployment, add these environment variables in your platform's dashboard:
 | `TWILIO_AUTH_TOKEN` | Twilio → Console → Auth Token | `xxxxxxxxxxxxxxx` |
 | `TWILIO_PHONE_NUMBER` | Twilio → WhatsApp → Your number | `whatsapp:+14155552671` |
 | `GEMINI_API_KEY` | [ai.google.dev](https://ai.google.dev) → Get API Key | `AIxxxxxxxxxxxxxxx` |
+| `APP_URL` | Your deployed app URL (for Render free tier) | `https://your-app.onrender.com` |
 
 #### Optional (Enhanced Features)
 | Variable | Purpose | Get From |
@@ -62,6 +63,8 @@ After deployment, add these environment variables in your platform's dashboard:
 | `OPENAI_API_KEY` | Additional AI | [platform.openai.com](https://platform.openai.com) → API Keys |
 | `AZURE_SPEECH_KEY` | Voice processing | [portal.azure.com](https://portal.azure.com) → Speech Services |
 | `AZURE_SPEECH_REGION` | Voice region | Azure → Speech Services → Region |
+
+> **🔄 Render Free Tier Users**: The `APP_URL` enables automatic keep-alive to prevent your app from spinning down. See the Keep-Alive Service section below for details.
 
 ### 3️⃣ Configure WhatsApp Webhook
 1. Go to [Twilio Console](https://console.twilio.com) → Messaging → WhatsApp
@@ -175,6 +178,56 @@ docker-compose logs -f app
 - **Data Privacy**: No sensitive health data stored
 - **CORS Protection**: Secure API access
 - **Error Handling**: Graceful failure management
+
+## 🔄 Keep-Alive Service (Render Free Tier)
+
+### Auto-Prevention of App Sleep
+Your WhatsApp Health Assistant includes an intelligent keep-alive service that prevents Render's free tier from spinning down your app after 15 minutes of inactivity.
+
+#### ✨ Features
+- **🤖 Automatic**: Only runs in production environment
+- **⏰ Smart Timing**: Pings every 14 minutes (before timeout)
+- **🏥 Health Checks**: Uses `/health` endpoint for pings
+- **🛡️ Error Handling**: Graceful failure handling with logging
+- **🎛️ Manual Control**: Test and monitor through API endpoints
+
+#### 🚀 Setup
+1. **Add Environment Variable**: `APP_URL=https://your-app-name.onrender.com`
+2. **Auto-Detection**: Also works with Render's `RENDER_EXTERNAL_URL`
+3. **Verify Status**: Check `/health/keep-alive/status` endpoint
+
+#### 📊 Monitoring Endpoints
+```bash
+# Check keep-alive status
+GET /health/keep-alive/status
+
+# Manual ping test
+POST /health/keep-alive/ping
+```
+
+#### 🔍 Example Response
+```json
+{
+  "success": true,
+  "keepAlive": {
+    "enabled": true,
+    "appUrl": "https://your-app-name.onrender.com",
+    "pingInterval": "*/14 * * * *",
+    "isRunning": true
+  },
+  "timestamp": "2025-09-15T10:30:00.000Z"
+}
+```
+
+#### 📋 Log Monitoring
+Monitor through Render logs:
+```
+[INFO] Initializing keep-alive service for https://your-app-name.onrender.com
+[INFO] Keep-alive ping scheduled every 14 minutes
+[INFO] Keep-alive ping successful - Response time: 234ms
+```
+
+> **💡 Result**: Your chatbot stays available 24/7 to help users, even on Render's free tier!
 
 ## 🆘 Troubleshooting
 
