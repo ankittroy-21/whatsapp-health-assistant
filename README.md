@@ -1,12 +1,30 @@
 # 🏥 WhatsApp Health Assistant Chatbot
 
-[![Deploy to Azure](https://img.shields.io/badge/Deploy%20to-Azure-0078d4?style=for-the-badge&logo=microsoft-azure)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fank## 📞 Support
+[![Deploy to Azure](https://img.shields.io/badge/Deploy%20to-Azure-0078d4?style=for-the-badge&logo=microsoft-azure)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fankittroy-21%2Fwhatsa## 📞 Support
 
 - 🐛 **Bug Reports**: [GitHub Issues](https://github.com/ankittroy-21/whatsapp-health-assistant/issues)
 - 📖 **Documentation**: [Project Wiki](https://github.com/ankittroy-21/whatsapp-health-assistant/wiki)
 - 💬 **Discussions**: [GitHub Discussions](https://github.com/ankittroy-21/whatsapp-health-assistant/discussions)
 
 ---
+
+<div align="center">
+
+**🇮🇳 Made with ❤️ for accessible healthcare in rural India**
+
+*Empowering communities with instant access to health information in their preferred language*
+
+[![GitHub Stars](https://img.shields.io/github/stars/ankittroy-21/whatsapp-health-assistant?style=social)](https://github.com/ankittroy-21/whatsapp-health-assistant)
+[![GitHub Forks](https://img.shields.io/github/forks/ankittroy-21/whatsapp-health-assistant?style=social)](https://github.com/ankittroy-21/whatsapp-health-assistant)
+
+</div>t%2Fmain%2Fazure-deploy.json)
+[![Deploy to Render](https://img.shields.io/badge/Deploy%20to-Render-46e3b7?style=for-the-badge&logo=render)](https://render.com/deploy?repo=https://github.com/ankittroy-21/whatsapp-health-assistant)
+[![Deploy to Railway](https://img.shields.io/badge/Deploy%20to-Railway-0B0D0E?style=for-the-badge&logo=railway)](https://railway.app/template/M4Kqvf?referralCode=ankittroy)
+[![Deploy to Vercel](https://img.shields.io/badge/Deploy%20to-Vercel-000000?style=for-the-badge&logo=vercel)](https://vercel.com/new/clone?repository-url=https://github.com/ankittroy-21/whatsapp-health-assistant)
+
+> 🇮🇳 **AI-Powered Health Assistant for Rural India** - Multilingual WhatsApp chatbot providing instant health guidance in English, Hindi, and Hinglish with voice support and emergency detection.
+
+![Health Assistant Demo](https://img.shields.io/badge/Status-Production%20Ready-success?style=flat-square)
 
 <div align="center">
 
