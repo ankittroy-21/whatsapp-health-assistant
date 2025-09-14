@@ -14,6 +14,9 @@ const keepAliveService = require('./src/services/keepAliveService');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Trust proxy for rate limiting (required for Render)
+app.set('trust proxy', 1);
+
 // Security middleware
 app.use(helmet());
 app.use(cors({
@@ -50,6 +53,7 @@ app.get('/health', (req, res) => {
 
 // API routes
 app.use('/webhook', whatsappRoutes);
+app.use('/webhook/whatsapp', whatsappRoutes); // Specific route for Twilio WhatsApp
 app.use('/api/health', healthRoutes);
 
 // Root endpoint
