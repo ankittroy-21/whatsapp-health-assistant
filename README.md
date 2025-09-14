@@ -1,41 +1,6 @@
 # 🏥 WhatsApp Health Assistant Chatbot
 
-[![Deploy to Azure](https://img.shields.io/badge/Deploy%20to-Azure-0078d4?style=for-the-badge&logo=microsoft-azure)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fankittroy-21%2Fwhatsa## 📞 Support
-
-- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/ankittroy-21/whatsapp-health-assistant/issues)
-- 📖 **Documentation**: [Project Wiki](https://github.com/ankittroy-21/whatsapp-health-assistant/wiki)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/ankittroy-21/whatsapp-health-assistant/discussions)
-
----
-
-<div align="center">
-
-**🇮🇳 Made with ❤️ for accessible healthcare in rural India**
-
-*Empowering communities with instant access to health information in their preferred language*
-
-[![GitHub Stars](https://img.shields.io/github/stars/ankittroy-21/whatsapp-health-assistant?style=social)](https://github.com/ankittroy-21/whatsapp-health-assistant)
-[![GitHub Forks](https://img.shields.io/github/forks/ankittroy-21/whatsapp-health-assistant?style=social)](https://github.com/ankittroy-21/whatsapp-health-assistant)
-
-</div>t%2Fmain%2Fazure-deploy.json)
-[![Deploy to Render](https://img.shields.io/badge/Deploy%20to-Render-46e3b7?style=for-the-badge&logo=render)](https://render.com/deploy?repo=https://github.com/ankittroy-21/whatsapp-health-assistant)
-[![Deploy to Railway](https://img.shields.io/badge/Deploy%20to-Railway-0B0D0E?style=for-the-badge&logo=railway)](https://railway.app/template/M4Kqvf?referralCode=ankittroy)
-[![Deploy to Vercel](https://img.shields.io/badge/Deploy%20to-Vercel-000000?style=for-the-badge&logo=vercel)](https://vercel.com/new/clone?repository-url=https://github.com/ankittroy-21/whatsapp-health-assistant)
-
-> 🇮🇳 **AI-Powered Health Assistant for Rural India** - Multilingual WhatsApp chatbot providing instant health guidance in English, Hindi, and Hinglish with voice support and emergency detection.
-
-![Health Assistant Demo](https://img.shields.io/badge/Status-Production%20Ready-success?style=flat-square)
-
-<div align="center">
-
-**🇮🇳 Made with ❤️ for accessible healthcare in rural India**
-
-*Empowering communities with instant access to health information in their preferred language*
-
-[![GitHub Stars](https://img.shields.io/github/stars/ankittroy-21/whatsapp-health-assistant?style=social)](https://github.com/ankittroy-21/whatsapp-health-assistant)
-[![GitHub Forks](https://img.shields.io/github/forks/ankittroy-21/whatsapp-health-assistant?style=social)](https://github.com/ankittroy-21/whatsapp-health-assistant)
-
-</div>pp-health-assistant%2Fmain%2Fazure-deploy.json)
+[![Deploy to Azure](https://img.shields.io/badge/Deploy%20to-Azure-0078d4?style=for-the-badge&logo=microsoft-azure)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fankittroy-21%2Fwhatsapp-health-assistant%2Fmain%2Fazure-deploy.json)
 [![Deploy to Render](https://img.shields.io/badge/Deploy%20to-Render-46e3b7?style=for-the-badge&logo=render)](https://render.com/deploy?repo=https://github.com/ankittroy-21/whatsapp-health-assistant)
 [![Deploy to Railway](https://img.shields.io/badge/Deploy%20to-Railway-0B0D0E?style=for-the-badge&logo=railway)](https://railway.app/template/M4Kqvf?referralCode=ankittroy)
 [![Deploy to Vercel](https://img.shields.io/badge/Deploy%20to-Vercel-000000?style=for-the-badge&logo=vercel)](https://vercel.com/new/clone?repository-url=https://github.com/ankittroy-21/whatsapp-health-assistant)
@@ -51,16 +16,14 @@
 
 ✅ **WhatsApp Integration** - Complete webhook handling for text & voice messages  
 ✅ **Multilingual Support** - English, Hindi, Hinglish with automatic detection  
-✅ **Voice Capabilities** - Speech-to-text and text-to-speech processing  
-✅ **AI Integration** - Google Gemini (primary), Hugging Face & OpenAI (fallback)  
-✅ **Health Knowledge Base** - Comprehensive offline medical database  
-✅ **Context Awareness** - Conversation history and user context storage  
-✅ **Emergency Detection** - Automatic emergency response protocols  
-✅ **Security Features** - Rate limiting, input validation, webhook verification  
-✅ **Analytics & Logging** - Complete conversation tracking and analytics  
-✅ **Automatic Setup** - Database and services auto-configured on deployment  
+✅ **AI-Powered Responses** - Google Gemini, Hugging Face, OpenAI integration  
+✅ **Voice Processing** - Speech-to-text and text-to-speech capabilities  
+✅ **Emergency Detection** - Automatic critical condition identification  
+✅ **Smart Database** - Supabase with automatic setup and user history  
+✅ **Production Ready** - Rate limiting, logging, error handling  
+✅ **Keep-Alive Service** - Prevents Render free tier from spinning down  
 
-## 🚀 Quick Deploy (5 Minutes)
+## 🚀 Quick Deploy
 
 ### 1️⃣ One-Click Deployment
 Choose your preferred platform and click deploy:
@@ -117,11 +80,6 @@ Send a WhatsApp message to your Twilio number:
 
 ## 🛠️ Local Development
 
-### Prerequisites
-- Node.js 18+
-- Git
-
-### Setup
 ```bash
 # Clone repository
 git clone https://github.com/ankittroy-21/whatsapp-health-assistant.git
@@ -130,68 +88,51 @@ cd whatsapp-health-assistant
 # Install dependencies
 npm install
 
-# Configure environment
+# Copy environment file
 cp .env.example .env
-# Edit .env with your API keys
 
+# Configure your .env file with API keys
 # Start development server
 npm run dev
+
+# Open another terminal for webhook testing
+npm run webhook
 ```
 
-### Docker Development
-```bash
-# Start with Docker
-docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+## 🏗️ Architecture
 
-# View logs
-docker-compose logs -f app
-```
+### 📱 Core Components
+- **Express Server**: Handles webhooks and API endpoints
+- **WhatsApp Integration**: Twilio Business API for messaging
+- **AI Services**: Multiple providers for reliability
+- **Database**: Supabase for user conversations and analytics
+- **Voice Processing**: Speech-to-text and text-to-speech
+- **Language Detection**: Automatic multilingual support
 
-## � API Key Setup Guide
+### 🔧 Technology Stack
+- **Backend**: Node.js, Express.js
+- **Database**: Supabase (PostgreSQL)
+- **AI**: Google Gemini, Hugging Face, OpenAI
+- **WhatsApp**: Twilio Business API
+- **Voice**: Azure Speech Services, Google Cloud Speech
+- **Translation**: Bhashini, AI4Bharat, Google Translate
+- **Deployment**: Docker, Azure, Render, Railway, Vercel
 
-### 1. Supabase (Database)
-1. Go to [supabase.com](https://supabase.com) → "New project"
-2. Wait for setup completion (~5 minutes)
-3. Go to Settings → API
-4. Copy "Project URL" and "anon public" key
-5. **Database auto-configures on first run - no manual setup needed!**
+### 🌐 API Endpoints
+- `POST /webhook/whatsapp` - WhatsApp message webhook
+- `GET /health` - Health check endpoint
+- `GET /health/info/:condition` - Get health information
+- `GET /health/history/:userId` - User conversation history
+- `POST /health/query` - Manual health query
+- `GET /health/keep-alive/status` - Keep-alive service status
 
-### 2. Twilio (WhatsApp)
-1. Sign up at [twilio.com](https://twilio.com)
-2. Go to Console → Account → Keys & Credentials
-3. Copy Account SID and Auth Token
-4. Set up WhatsApp Business → Get your WhatsApp number
-5. Configure webhook (see step 3 above)
+## 🎯 Use Cases
 
-### 3. Google Gemini (AI)
-1. Go to [ai.google.dev](https://ai.google.dev)
-2. Click "Get API key in Google AI Studio"
-3. Create new project and generate API key
-4. Copy the API key
-
-### 4. Optional Services
-- **Hugging Face**: [huggingface.co](https://huggingface.co) → Settings → Access Tokens
-- **OpenAI**: [platform.openai.com](https://platform.openai.com) → API Keys
-- **Azure Speech**: [portal.azure.com](https://portal.azure.com) → Create Speech Services
-
-## � Features Overview
-
-### 🤖 AI Integration
-- **Google Gemini**: Primary AI for health responses
-- **Hugging Face**: Fallback AI when Gemini unavailable
-- **OpenAI**: Secondary fallback for complex queries
-- **Offline Knowledge**: Local health database for emergencies
-
-### 🗣️ Voice Processing
-- **Speech-to-Text**: Understands voice messages
-- **Text-to-Speech**: Responds with voice messages
-- **Multi-Provider**: Google Cloud & Azure Speech support
-
-### 🌐 Multilingual Support
-- **English**: Full medical terminology
-- **Hindi**: Native script with cultural context
-- **Hinglish**: Mixed Hindi-English understanding
-- **Auto-Detection**: Automatically identifies language
+### 🏥 Health Guidance
+- **Symptom Analysis**: Intelligent symptom assessment
+- **Treatment Suggestions**: Evidence-based recommendations
+- **Medication Information**: Dosage and side effects
+- **Preventive Care**: Health tips and lifestyle advice
 
 ### 🚨 Emergency Detection
 - **Keyword Matching**: Detects emergency situations
@@ -199,7 +140,7 @@ docker-compose logs -f app
 - **Local Contacts**: Indian emergency service numbers
 - **Critical Care**: Guidance for serious conditions
 
-### � Analytics & Monitoring
+### 📊 Analytics & Monitoring
 - **Conversation Tracking**: All interactions logged
 - **User Analytics**: Usage patterns and preferences
 - **Health Insights**: Popular queries and trends
@@ -264,25 +205,6 @@ Monitor through Render logs:
 
 > **💡 Result**: Your chatbot stays available 24/7 to help users, even on Render's free tier!
 
-## 🆘 Troubleshooting
-
-### Common Issues
-
-**Webhook not receiving messages**
-- Verify webhook URL is publicly accessible
-- Check Twilio webhook configuration
-- Ensure webhook signature validation passes
-
-**AI responses not working**
-- Verify API keys are correct and active
-- Check service quotas and rate limits
-- Test fallback services
-
-**Database connection issues**
-- Confirm Supabase credentials
-- Database tables auto-create on first run
-- Check Supabase project status
-
 ## 📄 License
 
 MIT License with Health Disclaimer - see [LICENSE](LICENSE) file.
@@ -295,9 +217,9 @@ Contributions welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for guidel
 
 ## 📞 Support
 
-- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/your-username/whatsapp-health-assistant/issues)
-- 📖 **Documentation**: [Project Wiki](https://github.com/your-username/whatsapp-health-assistant/wiki)
-- � **Discussions**: [GitHub Discussions](https://github.com/your-username/whatsapp-health-assistant/discussions)
+- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/ankittroy-21/whatsapp-health-assistant/issues)
+- 📖 **Documentation**: [Project Wiki](https://github.com/ankittroy-21/whatsapp-health-assistant/wiki)
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/ankittroy-21/whatsapp-health-assistant/discussions)
 
 ---
 
@@ -307,7 +229,7 @@ Contributions welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for guidel
 
 *Empowering communities with instant access to health information in their preferred language*
 
-[![GitHub Stars](https://img.shields.io/github/stars/your-username/whatsapp-health-assistant?style=social)](https://github.com/your-username/whatsapp-health-assistant)
-[![GitHub Forks](https://img.shields.io/github/forks/your-username/whatsapp-health-assistant?style=social)](https://github.com/your-username/whatsapp-health-assistant)
+[![GitHub Stars](https://img.shields.io/github/stars/ankittroy-21/whatsapp-health-assistant?style=social)](https://github.com/ankittroy-21/whatsapp-health-assistant)
+[![GitHub Forks](https://img.shields.io/github/forks/ankittroy-21/whatsapp-health-assistant?style=social)](https://github.com/ankittroy-21/whatsapp-health-assistant)
 
 </div>
