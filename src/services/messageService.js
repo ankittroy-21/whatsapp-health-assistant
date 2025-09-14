@@ -26,8 +26,14 @@ class MessageService {
       const toNumber = to.startsWith('whatsapp:') ? to : `whatsapp:${to}`;
       const fromNumber = this.twilioNumber.startsWith('whatsapp:') ? this.twilioNumber : `whatsapp:${this.twilioNumber}`;
 
+      // Limit message length to 1600 characters (WhatsApp limit)
+      let truncatedMessage = message;
+      if (message.length > 1500) {
+        truncatedMessage = message.substring(0, 1500) + '\n\n💬 Message truncated due to length limit.';
+      }
+
       const result = await this.twilioClient.messages.create({
-        body: message,
+        body: truncatedMessage,
         from: fromNumber,
         to: toNumber
       });
