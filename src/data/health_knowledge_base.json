@@ -1,0 +1,532 @@
+{
+  "diseases": {
+    "diabetes": {
+      "en": {
+        "name": "Diabetes",
+        "definition": "Diabetes is a group of metabolic disorders characterized by high blood sugar levels over a prolonged period.",
+        "types": [
+          "Type 1 Diabetes: Body doesn't produce insulin",
+          "Type 2 Diabetes: Body doesn't use insulin properly",
+          "Gestational Diabetes: Occurs during pregnancy"
+        ],
+        "symptoms": [
+          "Increased thirst and frequent urination",
+          "Extreme fatigue and weakness",
+          "Blurred vision",
+          "Slow-healing wounds",
+          "Unexpected weight loss (Type 1)",
+          "Tingling in hands and feet"
+        ],
+        "causes": [
+          "Genetic factors",
+          "Obesity and physical inactivity",
+          "Poor diet high in sugar and processed foods",
+          "Age (risk increases after 45)",
+          "Family history of diabetes"
+        ],
+        "management": [
+          "Regular blood sugar monitoring",
+          "Healthy diet with controlled carbohydrates",
+          "Regular physical exercise",
+          "Medication as prescribed by doctor",
+          "Weight management",
+          "Stress management"
+        ],
+        "prevention": [
+          "Maintain healthy weight",
+          "Exercise regularly (30 minutes daily)",
+          "Eat balanced diet with whole grains, vegetables",
+          "Limit sugary drinks and processed foods",
+          "Regular health check-ups"
+        ],
+        "emergency_signs": [
+          "Blood sugar above 400 mg/dL",
+          "Severe dehydration",
+          "Difficulty breathing",
+          "Confusion or unconsciousness",
+          "Severe abdominal pain"
+        ],
+        "home_remedies": [
+          "Bitter gourd (karela) juice",
+          "Cinnamon powder with warm water",
+          "Fenugreek seeds soaked overnight",
+          "Regular walking after meals",
+          "Green tea instead of regular tea"
+        ]
+      },
+      "hi": {
+        "name": "मधुमेह (डायबिटीज)",
+        "definition": "मधुमेह एक चयापचय संबंधी विकार है जिसमें लंबे समय तक रक्त में शुगर का स्तर बढ़ा रहता है।",
+        "types": [
+          "टाइप 1 डायबिटीज: शरीर इंसुलिन नहीं बनाता",
+          "टाइप 2 डायबिटीज: शरीर इंसुलिन का सही उपयोग नहीं कर पाता",
+          "गर्भावस्था में मधुमेह: गर्भावस्था के दौरान होता है"
+        ],
+        "symptoms": [
+          "बार-बार प्यास लगना और पेशाब आना",
+          "अत्यधिक थकान और कमजोरी",
+          "धुंधला दिखाई देना",
+          "घाव का धीरे भरना",
+          "अचानक वजन कम होना (टाइप 1)",
+          "हाथ-पैरों में झुनझुनी"
+        ],
+        "causes": [
+          "आनुवंशिक कारक",
+          "मोटापा और शारीरिक निष्क्रियता",
+          "चीनी और प्रसंस्कृत खाद्य पदार्थों का अधिक सेवन",
+          "उम्र (45 के बाद जोखिम बढ़ता है)",
+          "पारिवारिक इतिहास"
+        ],
+        "management": [
+          "नियमित रक्त शुगर जांच",
+          "संतुलित आहार और कार्बोहाइड्रेट नियंत्रण",
+          "नियमित व्यायाम",
+          "डॉक्टर द्वारा दी गई दवाएं",
+          "वजन नियंत्रण",
+          "तनाव प्रबंधन"
+        ],
+        "prevention": [
+          "स्वस्थ वजन बनाए रखें",
+          "नियमित व्यायाम (दैनिक 30 मिनट)",
+          "संपूर्ण अनाज, सब्जियों के साथ संतुलित आहार",
+          "मीठे पेय और प्रसंस्कृत खाद्य पदार्थों को सीमित करें",
+          "नियमित स्वास्थ्य जांच"
+        ],
+        "emergency_signs": [
+          "रक्त शुगर 400 mg/dL से अधिक",
+          "गंभीर निर्जलीकरण",
+          "सांस लेने में कठिनाई",
+          "भ्रम या बेहोशी",
+          "पेट में तेज दर्द"
+        ],
+        "home_remedies": [
+          "करेले का जूस",
+          "दालचीनी पाउडर गर्म पानी के साथ",
+          "मेथी के दाने रात भर भिगोकर",
+          "खाना खाने के बाद नियमित टहलना",
+          "सामान्य चाय के बजाय ग्रीन टी"
+        ]
+      },
+      "hinglish": {
+        "name": "Diabetes (Madhumeh)",
+        "definition": "Diabetes ek metabolic disorder hai jismein blood mein sugar ka level lambe samay tak badha rehta hai.",
+        "types": [
+          "Type 1 Diabetes: Body insulin nahi banata",
+          "Type 2 Diabetes: Body insulin ka sahi use nahi kar pata",
+          "Gestational Diabetes: Pregnancy ke time hota hai"
+        ],
+        "symptoms": [
+          "Bar-bar pyaas lagana aur bathroom jana",
+          "Zyada thakaan aur kamjori",
+          "Dhundhla dikhna",
+          "Ghav ka dheere bharna",
+          "Achanak weight loss (Type 1)",
+          "Haath-paon mein jhunjhuni"
+        ],
+        "causes": [
+          "Genetic factors",
+          "Obesity aur physical inactivity",
+          "Sugar aur processed food ka zyada khana",
+          "Age (45 ke baad risk badhta hai)",
+          "Family history of diabetes"
+        ],
+        "management": [
+          "Regular blood sugar check karna",
+          "Healthy diet aur carbs control karna",
+          "Regular exercise karna",
+          "Doctor ki di gayi medicine lena",
+          "Weight control karna",
+          "Stress manage karna"
+        ],
+        "prevention": [
+          "Healthy weight maintain kariye",
+          "Regular exercise kariye (daily 30 minutes)",
+          "Balanced diet liye whole grains, vegetables ke saath",
+          "Sugary drinks aur processed food limit kariye",
+          "Regular health check-up karwaiye"
+        ],
+        "emergency_signs": [
+          "Blood sugar 400 mg/dL se zyada",
+          "Serious dehydration",
+          "Saans lene mein problem",
+          "Confusion ya unconscious hona",
+          "Pet mein serious pain"
+        ],
+        "home_remedies": [
+          "Karele ka juice",
+          "Dalchini powder garm paani ke saath",
+          "Methi ke daane raat bhar bhigoke",
+          "Khana khane ke baad regular walking",
+          "Normal chai ke bajaye green tea"
+        ]
+      }
+    },
+    "hypertension": {
+      "en": {
+        "name": "High Blood Pressure (Hypertension)",
+        "definition": "High blood pressure is a condition where the force of blood against artery walls is consistently too high.",
+        "normal_ranges": [
+          "Normal: Less than 120/80 mmHg",
+          "Elevated: 120-129/less than 80 mmHg",
+          "Stage 1: 130-139/80-89 mmHg",
+          "Stage 2: 140/90 mmHg or higher"
+        ],
+        "symptoms": [
+          "Headaches (especially morning headaches)",
+          "Dizziness or lightheadedness",
+          "Nosebleeds",
+          "Shortness of breath",
+          "Chest pain",
+          "Vision problems"
+        ],
+        "causes": [
+          "Excessive salt intake",
+          "Obesity and lack of physical activity",
+          "Smoking and alcohol consumption",
+          "Stress and anxiety",
+          "Family history",
+          "Age (risk increases with age)"
+        ],
+        "management": [
+          "Take medications as prescribed",
+          "Monitor blood pressure regularly",
+          "Reduce sodium intake",
+          "Maintain healthy weight",
+          "Exercise regularly",
+          "Limit alcohol consumption"
+        ],
+        "prevention": [
+          "Eat less salt (less than 6g per day)",
+          "Exercise for at least 30 minutes daily",
+          "Maintain healthy weight",
+          "Don't smoke",
+          "Limit alcohol intake",
+          "Manage stress effectively"
+        ],
+        "emergency_signs": [
+          "Blood pressure above 180/120 mmHg",
+          "Severe headache",
+          "Chest pain",
+          "Difficulty breathing",
+          "Severe anxiety",
+          "Confusion or vision changes"
+        ],
+        "home_remedies": [
+          "Garlic cloves daily",
+          "Beetroot juice",
+          "Regular meditation",
+          "Reduce caffeine intake",
+          "Potassium-rich foods (bananas, oranges)"
+        ]
+      },
+      "hi": {
+        "name": "उच्च रक्तचाप (हाइपरटेंशन)",
+        "definition": "उच्च रक्तचाप एक स्थिति है जिसमें धमनियों की दीवारों के खिलाफ रक्त का दबाव लगातार बहुत अधिक होता है।",
+        "normal_ranges": [
+          "सामान्य: 120/80 mmHg से कम",
+          "बढ़ा हुआ: 120-129/80 mmHg से कम",
+          "स्टेज 1: 130-139/80-89 mmHg",
+          "स्टेज 2: 140/90 mmHg या अधिक"
+        ],
+        "symptoms": [
+          "सिरदर्द (विशेषकर सुबह का सिरदर्द)",
+          "चक्कर आना या हल्का महसूस होना",
+          "नाक से खून आना",
+          "सांस लेने में तकलीफ",
+          "छाती में दर्द",
+          "दृष्टि संबंधी समस्याएं"
+        ],
+        "causes": [
+          "अत्यधिक नमक का सेवन",
+          "मोटापा और शारीरिक गतिविधि की कमी",
+          "धूम्रपान और शराब का सेवन",
+          "तनाव और चिंता",
+          "पारिवारिक इतिहास",
+          "उम्र (उम्र के साथ जोखिम बढ़ता है)"
+        ],
+        "management": [
+          "डॉक्टर द्वारा दी गई दवाएं लें",
+          "नियमित रूप से रक्तचाप की जांच करें",
+          "सोडियम का सेवन कम करें",
+          "स्वस्थ वजन बनाए रखें",
+          "नियमित व्यायाम करें",
+          "शराब का सेवन सीमित करें"
+        ],
+        "prevention": [
+          "कम नमक खाएं (प्रतिदिन 6 ग्राम से कम)",
+          "कम से कम 30 मिनट प्रतिदिन व्यायाम करें",
+          "स्वस्थ वजन बनाए रखें",
+          "धूम्रपान न करें",
+          "शराब का सेवन सीमित करें",
+          "तनाव को प्रभावी रूप से संभालें"
+        ],
+        "emergency_signs": [
+          "रक्तचाप 180/120 mmHg से अधिक",
+          "गंभीर सिरदर्द",
+          "छाती में दर्द",
+          "सांस लेने में कठिनाई",
+          "गंभीर चिंता",
+          "भ्रम या दृष्टि में परिवर्तन"
+        ],
+        "home_remedies": [
+          "प्रतिदिन लहसुन की कलियां",
+          "चुकंदर का जूस",
+          "नियमित ध्यान",
+          "कैफीन का सेवन कम करें",
+          "पोटेशियम युक्त खाद्य पदार्थ (केला, संतरा)"
+        ]
+      },
+      "hinglish": {
+        "name": "High Blood Pressure (BP)",
+        "definition": "High BP ek condition hai jismein arteries ki walls ke against blood ka pressure consistently zyada rehta hai.",
+        "normal_ranges": [
+          "Normal: 120/80 mmHg se kam",
+          "Elevated: 120-129/80 mmHg se kam",
+          "Stage 1: 130-139/80-89 mmHg",
+          "Stage 2: 140/90 mmHg ya zyada"
+        ],
+        "symptoms": [
+          "Headaches (especially subah ke headaches)",
+          "Chakkar aana ya light-headed feel karna",
+          "Naak se khoon aana",
+          "Saans lene mein takleef",
+          "Chest pain",
+          "Vision problems"
+        ],
+        "causes": [
+          "Zyada namak khana",
+          "Obesity aur physical activity ki kami",
+          "Smoking aur alcohol consumption",
+          "Stress aur anxiety",
+          "Family history",
+          "Age (age ke saath risk badhta hai)"
+        ],
+        "management": [
+          "Doctor ki di gayi medicines regularly liye",
+          "BP regularly check kariye",
+          "Sodium intake kam kariye",
+          "Healthy weight maintain kariye",
+          "Regular exercise kariye",
+          "Alcohol consumption limit kariye"
+        ],
+        "prevention": [
+          "Kam namak khaye (per day 6g se kam)",
+          "Kam se kam 30 minutes daily exercise",
+          "Healthy weight maintain kariye",
+          "Smoking mat kariye",
+          "Alcohol intake limit kariye",
+          "Stress effectively manage kariye"
+        ],
+        "emergency_signs": [
+          "BP 180/120 mmHg se zyada",
+          "Serious headache",
+          "Chest pain",
+          "Saans lene mein difficulty",
+          "Serious anxiety",
+          "Confusion ya vision changes"
+        ],
+        "home_remedies": [
+          "Daily lahsun ki kaliya",
+          "Chukandar ka juice",
+          "Regular meditation",
+          "Caffeine intake kam kariye",
+          "Potassium-rich foods (kela, santra)"
+        ]
+      }
+    },
+    "heart_disease": {
+      "en": {
+        "name": "Heart Disease",
+        "definition": "Heart disease refers to various conditions that affect the heart, including coronary artery disease, heart attacks, and heart failure.",
+        "types": [
+          "Coronary Artery Disease: Narrowed heart arteries",
+          "Heart Attack: Blocked blood flow to heart muscle",
+          "Heart Failure: Heart can't pump blood effectively",
+          "Arrhythmia: Irregular heartbeat"
+        ],
+        "symptoms": [
+          "Chest pain or discomfort",
+          "Shortness of breath",
+          "Pain in arms, back, neck, jaw, or stomach",
+          "Fatigue and weakness",
+          "Irregular heartbeat",
+          "Swelling in legs, ankles, feet"
+        ],
+        "risk_factors": [
+          "High blood pressure",
+          "High cholesterol",
+          "Diabetes",
+          "Smoking",
+          "Obesity",
+          "Family history of heart disease"
+        ],
+        "prevention": [
+          "Don't smoke and avoid secondhand smoke",
+          "Exercise regularly (150 minutes per week)",
+          "Eat heart-healthy diet",
+          "Maintain healthy weight",
+          "Manage stress",
+          "Get adequate sleep"
+        ],
+        "emergency_signs": [
+          "Severe chest pain",
+          "Pain spreading to arm, jaw, or back",
+          "Difficulty breathing",
+          "Nausea and vomiting",
+          "Cold sweat",
+          "Feeling of impending doom"
+        ],
+        "heart_healthy_foods": [
+          "Leafy green vegetables",
+          "Whole grains",
+          "Fish rich in omega-3",
+          "Nuts and seeds",
+          "Olive oil",
+          "Fresh fruits"
+        ]
+      },
+      "hi": {
+        "name": "हृदय रोग",
+        "definition": "हृदय रोग विभिन्न स्थितियों को संदर्भित करता है जो हृदय को प्रभावित करती हैं, जिसमें कोरोनरी धमनी रोग, दिल का दौरा और हृदय विफलता शामिल हैं।",
+        "types": [
+          "कोरोनरी धमनी रोग: हृदय की धमनियों का संकरा होना",
+          "दिल का दौरा: हृदय की मांसपेशी में रक्त प्रवाह बंद होना",
+          "हृदय विफलता: हृदय रक्त को प्रभावी रूप से पंप नहीं कर सकता",
+          "अतालता: अनियमित दिल की धड़कन"
+        ],
+        "symptoms": [
+          "छाती में दर्द या बेचैनी",
+          "सांस लेने में तकलीफ",
+          "बाहों, पीठ, गर्दन, जबड़े या पेट में दर्द",
+          "थकान और कमजोरी",
+          "अनियमित दिल की धड़कन",
+          "पैरों, टखनों, पैरों में सूजन"
+        ],
+        "risk_factors": [
+          "उच्च रक्तचाप",
+          "उच्च कोलेस्ट्रॉल",
+          "मधुमेह",
+          "धूम्रपान",
+          "मोटापा",
+          "हृदय रोग का पारिवारिक इतिहास"
+        ],
+        "prevention": [
+          "धूम्रपान न करें और अप्रत्यक्ष धूम्रपान से बचें",
+          "नियमित व्यायाम करें (प्रति सप्ताह 150 मिनट)",
+          "हृदय-स्वस्थ आहार लें",
+          "स्वस्थ वजन बनाए रखें",
+          "तनाव का प्रबंधन करें",
+          "पर्याप्त नींद लें"
+        ],
+        "emergency_signs": [
+          "गंभीर छाती में दर्द",
+          "दर्द का बांह, जबड़े या पीठ में फैलना",
+          "सांस लेने में कठिनाई",
+          "मतली और उल्टी",
+          "ठंडा पसीना",
+          "आसन्न विनाश की भावना"
+        ],
+        "heart_healthy_foods": [
+          "हरी पत्तेदार सब्जियां",
+          "साबुत अनाज",
+          "ओमेगा-3 से भरपूर मछली",
+          "नट्स और बीज",
+          "जैतून का तेल",
+          "ताजे फल"
+        ]
+      },
+      "hinglish": {
+        "name": "Heart Disease (Dil ki Bimari)",
+        "definition": "Heart disease different conditions ko refer karta hai jo heart ko affect karti hain, jismein coronary artery disease, heart attack, aur heart failure shamil hain.",
+        "types": [
+          "Coronary Artery Disease: Heart ki arteries ka narrow hona",
+          "Heart Attack: Heart muscle mein blood flow block hona",
+          "Heart Failure: Heart blood ko effectively pump nahi kar sakta",
+          "Arrhythmia: Irregular heartbeat"
+        ],
+        "symptoms": [
+          "Chest pain ya discomfort",
+          "Saans lene mein takleef",
+          "Baahon, peeth, gardan, jaw ya pet mein dard",
+          "Thakaan aur kamjori",
+          "Irregular heartbeat",
+          "Paeron, ankles, feet mein swelling"
+        ],
+        "risk_factors": [
+          "High blood pressure",
+          "High cholesterol",
+          "Diabetes",
+          "Smoking",
+          "Obesity",
+          "Heart disease ka family history"
+        ],
+        "prevention": [
+          "Smoking mat kariye aur secondhand smoke se bache",
+          "Regular exercise kariye (per week 150 minutes)",
+          "Heart-healthy diet liye",
+          "Healthy weight maintain kariye",
+          "Stress manage kariye",
+          "Adequate sleep liye"
+        ],
+        "emergency_signs": [
+          "Serious chest pain",
+          "Pain ka arm, jaw ya back mein failna",
+          "Saans lene mein difficulty",
+          "Nausea aur vomiting",
+          "Cold sweat",
+          "Impending doom ka feeling"
+        ],
+        "heart_healthy_foods": [
+          "Leafy green vegetables",
+          "Whole grains",
+          "Omega-3 se bharpur fish",
+          "Nuts aur seeds",
+          "Olive oil",
+          "Fresh fruits"
+        ]
+      }
+    }
+  },
+  "emergency_contacts": {
+    "india": [
+      "National Emergency Number: 112",
+      "Ambulance: 108",
+      "Fire Brigade: 101",
+      "Police: 100",
+      "Women Helpline: 1091",
+      "Child Helpline: 1098"
+    ]
+  },
+  "general_health_tips": {
+    "en": [
+      "Drink 8-10 glasses of water daily",
+      "Exercise for at least 30 minutes daily",
+      "Get 7-8 hours of sleep",
+      "Eat 5 servings of fruits and vegetables",
+      "Practice stress management techniques",
+      "Regular health check-ups",
+      "Maintain good hygiene",
+      "Avoid smoking and excessive alcohol"
+    ],
+    "hi": [
+      "प्रतिदिन 8-10 गिलास पानी पिएं",
+      "कम से कम 30 मिनट प्रतिदिन व्यायाम करें",
+      "7-8 घंटे की नींद लें",
+      "फल और सब्जियों के 5 हिस्से खाएं",
+      "तनाव प्रबंधन तकनीकों का अभ्यास करें",
+      "नियमित स्वास्थ्य जांच",
+      "अच्छी स्वच्छता बनाए रखें",
+      "धूम्रपान और अत्यधिक शराब से बचें"
+    ],
+    "hinglish": [
+      "Daily 8-10 glass paani piye",
+      "Kam se kam 30 minutes daily exercise kariye",
+      "7-8 hours ki neend liye",
+      "Fruits aur vegetables ke 5 servings khaye",
+      "Stress management techniques practice kariye",
+      "Regular health check-ups karwaiye",
+      "Good hygiene maintain kariye",
+      "Smoking aur excessive alcohol se bache"
+    ]
+  }
+}
