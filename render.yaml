@@ -1,26 +1,15 @@
-version: 2
-
-build:
-  commands:
-    - npm ci
-
-run:
-  commands:
-    - npm start
-
-env:
-  NODE_ENV: production
-  PORT: 3000
-  
 services:
-  web:
-    buildCommand: npm ci && npm run build
+  - type: web
+    name: whatsapp-health-assistant
+    env: node
+    plan: free
+    buildCommand: npm ci
     startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production
       - key: PORT
-        value: 3000
+        value: 10000
       - key: SUPABASE_URL
         sync: false
       - key: SUPABASE_KEY
@@ -32,6 +21,8 @@ services:
       - key: TWILIO_PHONE_NUMBER
         sync: false
       - key: GEMINI_API_KEY
+        sync: false
+      - key: APP_URL
         sync: false
       - key: HUGGINGFACE_API_TOKEN
         sync: false
