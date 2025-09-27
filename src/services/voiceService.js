@@ -26,6 +26,12 @@ class VoiceService {
     try {
       logger.info(`🎤 Converting speech to text from: ${audioUrl}`);
 
+      // Check if any voice service is configured
+      if (!this.azureSpeechKey && !this.googleProjectId) {
+        logger.warn('No voice services configured (Azure Speech or Google Cloud needed)');
+        throw new Error('Voice processing not configured');
+      }
+
       // Download audio file
       const audioPath = await this.downloadAudioFile(audioUrl);
       

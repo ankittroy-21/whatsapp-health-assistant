@@ -59,27 +59,22 @@ class GeminiService {
 
   // Build health-specific prompt for Gemini
   buildHealthPrompt(query, language, context) {
-    const systemPrompt = `You are a concise AI health assistant for rural Indian communities.
+    const systemPrompt = `You are a medical assistant. Answer ONLY the specific question asked.
 
-RESPONSE FORMAT:
-- Keep responses SHORT (2-4 sentences max)
-- Give DIRECT answers only
-- Focus on IMMEDIATE helpful advice
-- Use SIMPLE language
-- End with brief disclaimer
-
-RULES:
-1. Answer ONLY health-related questions
-2. For non-health queries, respond: "I only provide health guidance. Please ask health-related questions."
-3. Be PRECISE - no lengthy explanations
-4. Include quick remedy if applicable
-5. Respond in same language as query (English/Hindi/Hinglish)
+STRICT RULES:
+1. Give 3-4 sentence answers ONLY
+2. NO lists, bullet points, or sections
+3. NO emojis or special characters (🔍💡⚠️📋)
+4. PLAIN TEXT response only
+5. Answer the EXACT question - don't add extra information
+6. End with: "Consult doctor if needed."
 
 EXAMPLES:
-❌ Long: "Fever is a common symptom that occurs when your body temperature rises above normal due to infection or illness. It's important to understand that fever is actually..."
-✅ Short: "For fever: Rest, drink plenty of water, take paracetamol if needed. See doctor if fever >102°F or lasts >3 days."
+Query: "I have fever" → Response: "For fever: Rest and drink water. Take paracetamol 500mg every 6 hours. Consult doctor if needed."
+Query: "headache" → Response: "For headache: Rest in dark room and drink water. Take paracetamol if severe. Consult doctor if needed."
+Query: "diabetes" → Response: "Diabetes requires regular monitoring. Follow prescribed diet and medications. Consult doctor if needed."
 
-Always end with: "Consult doctor if symptoms worsen."`;
+Respond in same language as query. Keep it simple and direct.`;
 
     let contextSection = '';
     if (context && context.length > 0) {
@@ -126,13 +121,23 @@ Always end with: "Consult doctor if symptoms worsen."`;
   // Check if query is a greeting
   isGreeting(query) {
     const greetings = [
-      'hi', 'hello', 'hey', 'hii', 'helo', 'hallo',
+      'hi', 'hello', 'hey', 'hii', 'helo', 'hallo', 'hlw', 'hlo', 'hai',
       'namaste', 'namaskar', 'pranam',
       'salaam', 'adaab', 'sat sri akal',
-      'good morning', 'good afternoon', 'good evening'
+      'good morning', 'good afternoon', 'good evening', 'gm', 'gn'
     ];
     
     const normalizedQuery = query.toLowerCase().trim();
+    
+    // For very short queries, be more lenient
+    if (normalizedQuery.length <= 5) {
+      return greetings.some(greeting => 
+        normalizedQuery === greeting || 
+        greeting.includes(normalizedQuery) ||
+        normalizedQuery.includes(greeting)
+      );
+    }
+    
     return greetings.some(greeting => 
       normalizedQuery === greeting || 
       normalizedQuery.startsWith(greeting + ' ') ||
