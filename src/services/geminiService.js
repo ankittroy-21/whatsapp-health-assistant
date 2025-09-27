@@ -19,6 +19,15 @@ class GeminiService {
         throw new Error('Gemini API not configured');
       }
 
+      // Handle greetings and basic queries with quick responses
+      if (this.isGreeting(query)) {
+        return {
+          message: this.getGreetingResponse(language),
+          confidence: 1.0,
+          provider: 'gemini'
+        };
+      }
+
       const prompt = this.buildHealthPrompt(query, language, context);
       
       logger.info('🧠 Sending query to Gemini...');
@@ -33,8 +42,11 @@ class GeminiService {
 
       logger.info('✅ Gemini response received');
 
+      // Process and limit response length
+      const processedResponse = this.processHealthResponse(text.trim());
+
       return {
-        message: text.trim(),
+        message: processedResponse,
         confidence: 0.9,
         provider: 'gemini'
       };
@@ -47,29 +59,27 @@ class GeminiService {
 
   // Build health-specific prompt for Gemini
   buildHealthPrompt(query, language, context) {
-    const systemPrompt = `You are a knowledgeable AI health assistant specifically designed for rural Indian communities. Your responses should be:
+    const systemPrompt = `You are a concise AI health assistant for rural Indian communities.
 
-1. ACCURATE and based on medical knowledge
-2. CULTURALLY SENSITIVE for Indian healthcare context
-3. SIMPLE and easy to understand for non-medical people
-4. INCLUDE appropriate disclaimers about consulting healthcare professionals
-5. MULTILINGUAL - respond in the same language as the query (English, Hindi, or Hinglish)
+RESPONSE FORMAT:
+- Keep responses SHORT (2-4 sentences max)
+- Give DIRECT answers only
+- Focus on IMMEDIATE helpful advice
+- Use SIMPLE language
+- End with brief disclaimer
 
-IMPORTANT GUIDELINES:
-- Always recommend consulting a qualified doctor for serious conditions
-- Provide practical, actionable advice suitable for rural areas
-- Include emergency guidance when symptoms suggest urgent care
-- Be empathetic and supportive
-- Use simple medical terminology with explanations
-- Consider limited healthcare access in rural areas
+RULES:
+1. Answer ONLY health-related questions
+2. For non-health queries, respond: "I only provide health guidance. Please ask health-related questions."
+3. Be PRECISE - no lengthy explanations
+4. Include quick remedy if applicable
+5. Respond in same language as query (English/Hindi/Hinglish)
 
-LANGUAGE INSTRUCTIONS:
-- If query is in English, respond in English
-- If query is in Hindi (Devanagari script), respond in Hindi
-- If query is in Hinglish (Hindi words in English script), respond in Hinglish
-- Maintain the same level of formality as the question
+EXAMPLES:
+❌ Long: "Fever is a common symptom that occurs when your body temperature rises above normal due to infection or illness. It's important to understand that fever is actually..."
+✅ Short: "For fever: Rest, drink plenty of water, take paracetamol if needed. See doctor if fever >102°F or lasts >3 days."
 
-MEDICAL DISCLAIMER: Always include that this is AI-generated information for educational purposes and professional medical consultation is recommended.`;
+Always end with: "Consult doctor if symptoms worsen."`;
 
     let contextSection = '';
     if (context && context.length > 0) {
@@ -80,6 +90,65 @@ MEDICAL DISCLAIMER: Always include that this is AI-generated information for edu
     }
 
     return `${systemPrompt}${contextSection}\n\nCURRENT USER QUERY: ${query}\n\nPlease provide a helpful, accurate, and culturally appropriate health response:`;
+  }
+
+  // Process and limit response length
+  processHealthResponse(response) {
+    // Remove excessive explanations and keep only essential info
+    let processed = response;
+
+    // If response is too long (>800 chars), truncate intelligently
+    if (processed.length > 800) {
+      // Split into sentences and keep first few important ones
+      const sentences = processed.split(/[.!?]+/).filter(s => s.trim().length > 0);
+      const essential = sentences.slice(0, 3).join('. ') + '.';
+      
+      // Always preserve disclaimer if present
+      if (processed.toLowerCase().includes('consult doctor') || processed.toLowerCase().includes('see doctor')) {
+        processed = essential + ' Consult doctor if symptoms worsen.';
+      } else {
+        processed = essential;
+      }
+    }
+
+    // Clean up any remaining verbose patterns
+    processed = processed
+      .replace(/In summary,?\s*/gi, '')
+      .replace(/To conclude,?\s*/gi, '')
+      .replace(/It's important to (note|understand|remember) that\s*/gi, '')
+      .replace(/Please remember that\s*/gi, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+
+    return processed;
+  }
+
+  // Check if query is a greeting
+  isGreeting(query) {
+    const greetings = [
+      'hi', 'hello', 'hey', 'hii', 'helo', 'hallo',
+      'namaste', 'namaskar', 'pranam',
+      'salaam', 'adaab', 'sat sri akal',
+      'good morning', 'good afternoon', 'good evening'
+    ];
+    
+    const normalizedQuery = query.toLowerCase().trim();
+    return greetings.some(greeting => 
+      normalizedQuery === greeting || 
+      normalizedQuery.startsWith(greeting + ' ') ||
+      normalizedQuery.endsWith(' ' + greeting)
+    );
+  }
+
+  // Get appropriate greeting response
+  getGreetingResponse(language) {
+    const responses = {
+      en: "🩺 Health Assistant: Hello! I provide quick health advice in English, Hindi & Hinglish. What's your health question?",
+      hi: "🩺 स्वास्थ्य सहायक: नमस्ते! मैं स्वास्थ्य सलाह देता हूं। आपका स्वास्थ्य प्रश्न क्या है?",
+      hinglish: "🩺 Health Assistant: Namaste! Main health advice deta hun. Aapka health question kya hai?"
+    };
+
+    return responses[language] || responses.en;
   }
 
   // Check if Gemini is available
