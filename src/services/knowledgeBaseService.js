@@ -26,27 +26,40 @@ class KnowledgeBaseService {
     try {
       const lowerQuery = query.toLowerCase();
       
+      logger.info(`🔍 Knowledge base searching for: "${query}"`);
+      
+      // First try direct symptom matching for common symptoms
+      const directSymptomResponse = this.getDirectSymptomResponse(lowerQuery, language);
+      if (directSymptomResponse) {
+        logger.info('✅ Direct symptom match found');
+        return directSymptomResponse;
+      }
+
       // Search for specific diseases
       const diseaseInfo = this.searchDiseases(lowerQuery, language);
       if (diseaseInfo) {
+        logger.info('✅ Disease match found');
         return diseaseInfo;
       }
 
-      // Search for symptoms
+      // Search for symptoms (with improved matching)
       const symptomInfo = this.searchBySymptoms(lowerQuery, language);
       if (symptomInfo) {
+        logger.info('✅ Symptom match found');
         return symptomInfo;
       }
 
       // Search for general health topics
       const generalInfo = this.searchGeneralHealth(lowerQuery, language);
       if (generalInfo) {
+        logger.info('✅ General health match found');
         return generalInfo;
       }
 
       // Search for emergency information
       const emergencyInfo = this.searchEmergencyInfo(lowerQuery, language);
       if (emergencyInfo) {
+        logger.info('✅ Emergency info match found');
         return emergencyInfo;
       }
 
@@ -56,6 +69,56 @@ class KnowledgeBaseService {
       logger.error('Knowledge base search error:', error);
       return this.getDefaultResponse(language);
     }
+  }
+
+  // Get direct response for common symptoms
+  getDirectSymptomResponse(query, language) {
+    const commonSymptoms = {
+      fever: {
+        en: "For fever, rest and drink plenty of water. Take paracetamol 500mg every 6 hours if needed. Use cold compress on forehead. See doctor if temperature exceeds 103°F or persists for more than 3 days.",
+        hi: "बुखार के लिए आराम करें और बहुत पानी पिएं। जरूरत पड़ने पर हर 6 घंटे में पैरासिटामोल 500mg लें। माथे पर ठंडी पट्टी रखें। यदि तापमान 103°F से अधिक हो या 3 दिन से अधिक रहे तो डॉक्टर से मिलें।",
+        hinglish: "Fever ke liye aaram karo aur bahut paani piyo. Jarurat padne par har 6 ghante mein paracetamol 500mg lo. Mathe par thandi patti rakho. Agar temperature 103°F se zyada ho ya 3 din se zyada rahe to doctor se milo."
+      },
+      headache: {
+        en: "For headache, rest in a quiet, dark room. Apply cold or warm compress on forehead. Take paracetamol or ibuprofen as directed. Stay hydrated. See doctor if severe or persistent.",
+        hi: "सिरदर्द के लिए शांत, अंधेरे कमरे में आराम करें। माथे पर ठंडी या गर्म पट्टी लगाएं। निर्देशानुसार पैरासिटामोल या इबुप्रोफेन लें। हाइड्रेटेड रहें। यदि गंभीर या लगातार हो तो डॉक्टर से मिलें।",
+        hinglish: "Headache ke liye shaant, andhera kamre mein aaram karo. Mathe par thandi ya garm patti lagao. Direction ke according paracetamol ya ibuprofen lo. Hydrated raho. Agar serious ya lagatar ho to doctor se milo."
+      },
+      cough: {
+        en: "For cough, drink warm water with honey and lemon. Use steam inhalation. Avoid cold drinks and ice cream. Take cough syrup if needed. See doctor if blood in cough or persists for more than 2 weeks.",
+        hi: "खांसी के लिए शहद और नींबू के साथ गर्म पानी पिएं। भाप का सेवन करें। ठंडे पेय और आइसक्रीम से बचें। जरूरत पड़ने पर खांसी की सिरप लें। यदि खांसी में खून या 2 सप्ताह से अधिक हो तो डॉक्टर से मिलें।",
+        hinglish: "Cough ke liye honey aur lemon ke saath garm paani piyo. Steam inhalation karo. Thande drinks aur ice cream se bacho. Jarurat padne par cough syrup lo. Agar cough mein blood ho ya 2 hafta se zyada ho to doctor se milo."
+      }
+    };
+
+    // Check for direct symptom matches
+    for (const [symptom, responses] of Object.entries(commonSymptoms)) {
+      const symptomKeywords = [symptom, symptom + 's', 'i have ' + symptom, symptom + ' problem'];
+      
+      if (symptomKeywords.some(keyword => query.includes(keyword))) {
+        return responses[language] || responses['en'];
+      }
+    }
+
+    // Check for Hindi/Hinglish variants
+    const hindiSymptoms = {
+      'bukhar': 'fever',
+      'garmi': 'fever', 
+      'temperature': 'fever',
+      'sir dard': 'headache',
+      'sar dard': 'headache',
+      'headache': 'headache',
+      'khansi': 'cough',
+      'khasi': 'cough'
+    };
+
+    for (const [hindiWord, englishSymptom] of Object.entries(hindiSymptoms)) {
+      if (query.includes(hindiWord) && commonSymptoms[englishSymptom]) {
+        return commonSymptoms[englishSymptom][language] || commonSymptoms[englishSymptom]['en'];
+      }
+    }
+
+    return null;
   }
 
   // Search for specific diseases
