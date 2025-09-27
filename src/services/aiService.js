@@ -33,8 +33,16 @@ class AIService {
             context
           });
 
-          if (result && result.message) {
-            logger.info(`✅ ${provider.name} provider successful`);
+          // More detailed logging for debugging
+          logger.info(`📊 ${provider.name} result:`, {
+            hasResult: !!result,
+            hasMessage: !!(result && result.message),
+            messageLength: result && result.message ? result.message.length : 0,
+            messagePreview: result && result.message ? result.message.substring(0, 100) + '...' : 'No message'
+          });
+
+          if (result && result.message && result.message.trim().length > 0) {
+            logger.info(`✅ ${provider.name} provider successful with valid response`);
             
             // Translate response if needed
             const translatedResponse = await this.translateResponse(result.message, language);
@@ -46,16 +54,19 @@ class AIService {
               confidence: result.confidence || 0.8,
               timestamp: new Date().toISOString()
             };
+          } else {
+            logger.warn(`⚠️ ${provider.name} returned empty or invalid response`);
           }
 
         } catch (error) {
           logger.warn(`❌ ${provider.name} provider failed:`, error.message);
+          logger.error(`🔍 Full error details for ${provider.name}:`, error);
           continue;
         }
       }
 
-      // If all AI providers fail, use knowledge base
-      logger.info('🗃️ All AI providers failed, using knowledge base...');
+      // If all AI providers fail, use knowledge base only as true fallback
+      logger.warn('🗃️ All AI providers failed or returned empty responses, using knowledge base as fallback...');
       return await this.useKnowledgeBaseFallback(query, language, context);
 
     } catch (error) {
@@ -101,14 +112,24 @@ class AIService {
   // Use knowledge base as fallback
   async useKnowledgeBaseFallback(query, language, context) {
     try {
+      // Check if knowledge base fallback is disabled (for testing)
+      if (process.env.DISABLE_KNOWLEDGE_BASE_FALLBACK === 'true') {
+        logger.info('🚫 Knowledge base fallback is disabled');
+        return this.getDefaultErrorResponse(language);
+      }
+
+      logger.info('🗃️ Attempting knowledge base fallback for query:', query);
       const knowledgeResponse = await knowledgeBaseService.searchHealthInfo(query, language);
       
       if (knowledgeResponse) {
+        // Limit knowledge base response length to prevent long formatted responses
+        const limitedResponse = this.limitResponseLength(knowledgeResponse, 200);
+        
         return {
-          message: knowledgeResponse,
+          message: limitedResponse,
           provider: 'knowledge_base',
           language: language,
-          confidence: 0.7,
+          confidence: 0.5, // Lower confidence for fallback
           timestamp: new Date().toISOString()
         };
       }
@@ -120,6 +141,35 @@ class AIService {
       logger.error('Knowledge base fallback failed:', error);
       return this.getDefaultErrorResponse(language);
     }
+  }
+
+  // Limit response length to prevent overly long responses
+  limitResponseLength(response, maxLength = 200) {
+    if (!response || response.length <= maxLength) {
+      return response;
+    }
+
+    // Remove formatting characters and emojis
+    let cleanResponse = response
+      .replace(/[📍💊🌡️🏥💧🍯🧄🫖]/g, '') // Remove emojis
+      .replace(/\*\*(.*?)\*\*/g, '$1') // Remove bold formatting
+      .replace(/\*/g, '') // Remove asterisks
+      .replace(/\n•/g, ',') // Convert bullet points to commas
+      .replace(/\n/g, ' ') // Replace newlines with spaces
+      .trim();
+
+    // Truncate to max length and add "See doctor if symptoms persist"
+    if (cleanResponse.length > maxLength) {
+      cleanResponse = cleanResponse.substring(0, maxLength - 50).trim();
+      // Find last complete sentence
+      const lastPeriod = cleanResponse.lastIndexOf('.');
+      if (lastPeriod > 50) {
+        cleanResponse = cleanResponse.substring(0, lastPeriod + 1);
+      }
+      cleanResponse += ' See doctor if symptoms persist.';
+    }
+
+    return cleanResponse;
   }
 
   // Get default error response

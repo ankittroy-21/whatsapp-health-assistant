@@ -36,14 +36,19 @@ class GeminiService {
       const response = await result.response;
       const text = response.text();
 
+      logger.info(`🧠 Gemini raw response (${text ? text.length : 0} chars):`, text ? text.substring(0, 200) + '...' : 'No text');
+
       if (!text || text.trim().length === 0) {
+        logger.error('❌ Gemini returned empty response');
         throw new Error('Empty response from Gemini');
       }
 
-      logger.info('✅ Gemini response received');
+      logger.info('✅ Gemini response received and validated');
 
       // Process and limit response length
       const processedResponse = this.processHealthResponse(text.trim());
+      
+      logger.info(`📝 Processed response (${processedResponse.length} chars):`, processedResponse.substring(0, 100) + '...');
 
       return {
         message: processedResponse,
@@ -52,29 +57,34 @@ class GeminiService {
       };
 
     } catch (error) {
-      logger.error('Gemini API error:', error);
+      logger.error('❌ Gemini API error details:', {
+        message: error.message,
+        stack: error.stack,
+        hasModel: !!this.model,
+        hasApiKey: !!this.apiKey
+      });
       throw error;
     }
   }
 
   // Build health-specific prompt for Gemini
   buildHealthPrompt(query, language, context) {
-    const systemPrompt = `You are a medical assistant. Answer ONLY the specific question asked.
+    const systemPrompt = `You are a simple health assistant. Give SHORT answers ONLY.
 
-STRICT RULES:
-1. Give 3-4 sentence answers ONLY
-2. NO lists, bullet points, or sections
-3. NO emojis or special characters (🔍💡⚠️📋)
-4. PLAIN TEXT response only
-5. Answer the EXACT question - don't add extra information
-6. End with: "Consult doctor if needed."
+Rules:
+- Answer in 2-3 sentences maximum
+- NO bullet points, lists, or formatting
+- NO emojis or symbols  
+- Answer ONLY what is asked
+- Give basic treatment advice
+- End with "See doctor if symptoms persist"
 
-EXAMPLES:
-Query: "I have fever" → Response: "For fever: Rest and drink water. Take paracetamol 500mg every 6 hours. Consult doctor if needed."
-Query: "headache" → Response: "For headache: Rest in dark room and drink water. Take paracetamol if severe. Consult doctor if needed."
-Query: "diabetes" → Response: "Diabetes requires regular monitoring. Follow prescribed diet and medications. Consult doctor if needed."
+Examples:
+"I have fever" → "Take rest and drink plenty of water. Use paracetamol 500mg every 6 hours for fever. See doctor if symptoms persist."
 
-Respond in same language as query. Keep it simple and direct.`;
+"headache" → "Rest in a quiet, dark room. Take paracetamol or apply cold compress on forehead. See doctor if symptoms persist."
+
+Language: Respond in ${language === 'hi' ? 'Hindi' : language === 'hinglish' ? 'Hinglish' : 'English'}`;
 
     let contextSection = '';
     if (context && context.length > 0) {
